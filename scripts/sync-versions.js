@@ -120,7 +120,12 @@ function discoverStarters() {
       if (ALWAYS_SKIP_DIRS.has(name)) return false;
       if (!INCLUDE_ALL && NON_BASELINE_DIRS.has(name)) return false;
       if (name.startsWith('.') || name.startsWith('_')) return false;
-      const stat = fs.statSync(path.join(ROOT, name));
+      let stat;
+      try {
+        stat = fs.statSync(path.join(ROOT, name));
+      } catch {
+        return false;
+      }
       return stat.isDirectory();
     })
     .sort();
