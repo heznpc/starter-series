@@ -148,7 +148,7 @@ product layers.
 
 - 11 starters above, all under [github.com/starter-series](https://github.com/starter-series). Every starter ships with:
   - **CI/CD pipelines** — GitHub Actions for build, test, lint, and platform-specific deploy or package workflows
-  - **Security in CI** — language-appropriate dependency audit, gitleaks (SHA256-pinned), CodeQL, license check, and safe install defaults
+  - **Security in CI** — language-appropriate dependency audit (lockfile audit, or image scanning where the deliverable is a container), gitleaks (SHA256-pinned), CodeQL, AI security review on pull requests, license check wherever the starter carries a dependency graph, and safe install defaults
   - **Publish pipelines** — platform-specific publishing to npm, PyPI, Docker / GHCR, VS Marketplace, Open VSX, AMO, Chrome Web Store, App Store, Play Store, GitHub Releases
   - **Weekly CI health check** with **auto-issue on failure** (you get a GitHub issue when scheduled CI breaks)
   - **Stale automation** — inactive issues/PRs are auto-labeled and auto-closed
