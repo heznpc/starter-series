@@ -94,13 +94,13 @@ command above.
 and audits existing repositories. Its npm package is `starter-series`; the
 binaries are `starter-series` and `create-starter`.
 
-The package is not yet available on npm. These canonical commands apply after
-publication; use the GitHub template quick start above today.
+Run the [`starter-series`](https://www.npmjs.com/package/starter-series) npm package with Node.js 22 or newer:
 
 ```bash
 npx starter-series --help
 # Inside an existing repository:
-npx starter-series add-component
+npx starter-series check
+npx starter-series check --instructions
 ```
 
 ## Health — receipts, not claims
