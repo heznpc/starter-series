@@ -35,8 +35,6 @@ The baseline standard, in increasing order of capability:
 |---|---|---|---|---|---|---|
 | starter-series hub | ✅ | ✅ Claude/Copilot/Cursor pointers | n/a (policy/docs/site hub) | n/a | n/a | n/a |
 | 11 starters | ✅ (AGENTS.md ships in each template) | ✅ Claude/Copilot/Cursor pointers | n/a (templates, not tools) | n/a | n/a | n/a |
-| ProfileKit | ✅ | ✅ Claude/Copilot/Cursor pointers | n/a (service/API surface) | n/a | n/a | n/a |
-| profilekit-mcp | ✅ | ✅ Claude/Copilot/Cursor pointers | ✅ | package/build contract | n/a | ✅ stdio server |
 
 ## Adapter rule
 
@@ -73,8 +71,6 @@ use them as completion evidence.
 | Repo | Current classification |
 |---|---|
 | create-starter | external proof session |
-| shotkit | external proof session |
-| icon-maker | pre-release/local tool |
 
 ## Rollout rule
 

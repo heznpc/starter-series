@@ -5,14 +5,14 @@ assets, org-audit workflow, and completion/agent-native policy docs.
 
 ## Current Cycle Scope
 
-`create-starter` and `shotkit` are handled in separate sessions. Do not edit
-those repos from this workspace when working on the current service-completion
-cycle. Their public flows remain external dependencies, so claims about their
-commands require fresh proof from those sessions.
+`create-starter` belongs to Starter Series; its release proof is tracked
+separately from the starter completion baseline. Public command claims require
+current package metadata and execution evidence.
 
 The current completion baseline is defined in
-`docs/service-completion-definition.md`: this repo, the 11 core starters, and
-the already-public `ProfileKit` / `profilekit-mcp` pair.
+`docs/service-completion-definition.md`: this repo and the 11 core starters.
+The org profile is a public surface. Independent products live under `heznpc`
+and are outside this fleet.
 
 ## Project Structure
 
@@ -46,12 +46,12 @@ git diff --check
 - Public docs must match code, workflows, package metadata, and current repo
   inventory. Do not describe planned tools as complete.
 - npm package identities must be unscoped product nouns. Use names like
-  `starter-series`, `shotkit`, `iconkit`, or `profilekit-mcp`; do not invent
+  `starter-series`, `demoshot`, `iconkit`, or `profilekit-mcp`; do not invent
   scoped npm package names.
 - GitHub organization membership is not proof that a repo belongs in the
   completion baseline. Baseline membership must match
   `docs/service-completion-definition.md`.
-- `icon-maker`, `rulemeter`, `landing-page`, and `dot-github` are classification
+- `rulemeter`, `landing-page`, and `dot-github` are classification
   or cleanup work unless explicitly promoted with evidence.
 - Treat this file as the source of truth for coding-agent context. Client-specific
   instruction files for Claude, Copilot, Cursor, Antigravity, Codex, or similar

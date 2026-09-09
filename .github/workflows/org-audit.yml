@@ -27,9 +27,9 @@ jobs:
         run: |
           set -euo pipefail
           ROOT="/tmp/starter-series-baseline"
-          REPOS="starter-series browser-extension-starter cloudflare-pages-starter discord-bot-starter docker-deploy-starter electron-app-starter mcp-server-starter npm-package-starter python-mcp-server-starter react-native-starter telegram-bot-starter vscode-extension-starter ProfileKit profilekit-mcp"
-          CLAIM_REPOS="dot-github icon-maker"
-          EXTERNAL_PACKAGE_REPOS="create-starter shotkit"
+          REPOS="starter-series browser-extension-starter cloudflare-pages-starter discord-bot-starter docker-deploy-starter electron-app-starter mcp-server-starter npm-package-starter python-mcp-server-starter react-native-starter telegram-bot-starter vscode-extension-starter"
+          CLAIM_REPOS=".github"
+          EXTERNAL_PACKAGE_REPOS="create-starter"
           mkdir -p "$ROOT"
           for r in $REPOS; do
             git clone --quiet --depth=1 "https://github.com/starter-series/$r" "$ROOT/$r"

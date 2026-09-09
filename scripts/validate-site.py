@@ -40,8 +40,6 @@ HEALTH_AUDIT_REPOS = {
     "react-native-starter",
     "telegram-bot-starter",
     "vscode-extension-starter",
-    "ProfileKit",
-    "profilekit-mcp",
 }
 
 DEPLOY_FILES = {

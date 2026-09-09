@@ -2,10 +2,9 @@
 
 # Starter Series
 
-**AI writes your code. We ship it safely.**
+**Production-ready starters for shipping software, with CI, security, release, and deployment paths pre-wired.**
 
-Safe-by-default templates for shipping AI-assisted projects.<br>
-Start with the deploy target, then keep the first shipping path covered.
+One fleet of 11 starters. Start with what you want to deploy.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -40,7 +39,8 @@ path. If the app shape is still undecided, start with Docker deploy:
 
 ```bash
 # 1. Use as a GitHub template
-gh repo create my-app --template starter-series/docker-deploy-starter
+gh repo create my-app --template starter-series/docker-deploy-starter --clone
+cd my-app
 
 # 2. Write your app
 
@@ -48,9 +48,7 @@ gh repo create my-app --template starter-series/docker-deploy-starter
 git push origin main
 ```
 
-Companion tooling exists for scaffolding, audits, and release assets, but those
-tool packages are in separate proof sessions. The starters below remain directly
-usable without any CLI package.
+For CLI scaffolding and repository audits, use [create-starter](#create-starter).
 
 ## Local site checks
 
@@ -90,25 +88,20 @@ command above.
 | [react-native-starter](https://github.com/starter-series/react-native-starter) | Expo + EAS Build with App Store + Play Store CI/CD | Expo, iOS, Android |
 | [cloudflare-pages-starter](https://github.com/starter-series/cloudflare-pages-starter) | Static site + Cloudflare Pages deploy, unlimited bandwidth | Cloudflare Pages, Wrangler, GitHub Actions |
 
-## Companion tooling
+## create-starter
 
-These repos are useful around the starters, but they are not completion evidence
-for this cycle. Their package names and release proofs are tracked separately.
+[create-starter](https://github.com/starter-series/create-starter) scaffolds starters
+and audits existing repositories. Its npm package is `starter-series`; the
+binaries are `starter-series` and `create-starter`.
 
-| Tool | Current role in this hub | Completion status |
-|------|--------------------------|-------------------|
-| [create-starter](https://github.com/starter-series/create-starter) | Companion scaffolding and audit tool | Separate proof session |
-| [shotkit](https://github.com/starter-series/shotkit) | Companion release-asset tool for browser extensions | Separate proof session |
+The package is not yet available on npm. These canonical commands apply after
+publication; use the GitHub template quick start above today.
 
-## Launch & Presence
-
-Profile and promotion tools for the launch side of the ecosystem.
-
-| Tool | What it does | Surfaces |
-|------|--------------|----------|
-| [ProfileKit](https://github.com/starter-series/ProfileKit) | Build composable SVG cards for GitHub profiles, READMEs, dev blogs, and personal sites | Vercel API · Docker self-host |
-| [profilekit-mcp](https://github.com/starter-series/profilekit-mcp) | Render ProfileKit cards from Claude Code, Codex, ChatGPT Apps, or any MCP-capable agent | npm package · MCP stdio |
-| Icon Maker (pre-release) | Generate deterministic app, extension, connector, and marketplace icon sets from one config | local CLI (`--json` agent contract) · Claude Code skill; public repo/npm pending |
+```bash
+npx starter-series --help
+# Inside an existing repository:
+npx starter-series add-component
+```
 
 ## Health — receipts, not claims
 
@@ -117,10 +110,8 @@ Profile and promotion tools for the launch side of the ecosystem.
 current completion baseline and runs an independent baseline receipt check:
 README, `AGENTS.md`, security policy, Dependabot, CI, CodeQL where applicable,
 unscoped npm names, and the hub's static-site first action. It also checks
-claim-only public surfaces such as the org profile and pre-release Icon Maker
-docs without counting them as baseline completion evidence. `create-starter` and
-`shotkit` are tracked in separate proof sessions, so this badge is not allowed to
-stand in for their release evidence.
+the org profile without counting it as baseline completion evidence.
+`create-starter` release proof is tracked separately; this badge does not replace it.
 
 Current-cycle completion is defined in
 [docs/service-completion-definition.md](docs/service-completion-definition.md).
@@ -141,8 +132,6 @@ product layers.
 | react-native-starter | [![CI](https://github.com/starter-series/react-native-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/starter-series/react-native-starter/actions/workflows/ci.yml) |
 | telegram-bot-starter | [![CI](https://github.com/starter-series/telegram-bot-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/starter-series/telegram-bot-starter/actions/workflows/ci.yml) |
 | vscode-extension-starter | [![CI](https://github.com/starter-series/vscode-extension-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/starter-series/vscode-extension-starter/actions/workflows/ci.yml) |
-| ProfileKit | [![CI](https://github.com/starter-series/ProfileKit/actions/workflows/ci.yml/badge.svg)](https://github.com/starter-series/ProfileKit/actions/workflows/ci.yml) |
-| profilekit-mcp | [![CI](https://github.com/starter-series/profilekit-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/starter-series/profilekit-mcp/actions/workflows/ci.yml) |
 
 ## Currently implemented
 
@@ -153,17 +142,14 @@ product layers.
   - **Weekly CI health check** with **auto-issue on failure** (you get a GitHub issue when scheduled CI breaks)
   - **Stale automation** — inactive issues/PRs are auto-labeled and auto-closed
   - **Grouped Dependabot** — prevents the lockfile-conflict cascade that ungrouped Dependabot produces
-- `create-starter` and `shotkit` are useful companion tools, but their package
-  names and release proofs are tracked outside this completion cycle.
-- ProfileKit + profilekit-mcp extend the series from project launch into profile branding and agent-driven README composition.
+- `create-starter` provides scaffolding and repository audits; its release proof is tracked separately.
 - OIDC trusted publishing where the platform supports it (npm, PyPI) — no long-lived secrets
 - Bilingual docs (English + 한국어) on every starter
 - 5-step "graduation from vibe coding" guide for users coming from Lovable / Bolt / v0
 
 ## Planned
 
-- Companion-tool follow-up lives in the separate `create-starter` and `shotkit`
-  sessions, not in this completion baseline.
+- `create-starter` release follow-up is tracked separately from starter completion.
 
 ## Design intent
 

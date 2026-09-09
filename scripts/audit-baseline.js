@@ -3,8 +3,8 @@
 // audit-baseline.js — Independent Starter Series baseline receipt.
 //
 // This is intentionally smaller than create-starter's audit surface. The current
-// completion baseline excludes create-starter and shotkit as service evidence,
-// while still guarding their public package names from scoped-name drift.
+// completion baseline excludes create-starter as service evidence,
+// while still guarding its public package name from scoped-name drift.
 
 const fs = require('fs');
 const path = require('path');
@@ -22,13 +22,10 @@ const BASELINE_REPOS = [
   'react-native-starter',
   'telegram-bot-starter',
   'vscode-extension-starter',
-  'ProfileKit',
-  'profilekit-mcp',
 ];
 
 const EXTERNAL_PACKAGE_NAMES = {
   'create-starter': 'starter-series',
-  shotkit: 'shotkit',
 };
 
 const REQUIRED_FILES = [
@@ -131,7 +128,7 @@ function auditExternalPackageNames(failures, notes) {
       failures.push(`external package uses a scoped npm name: ${repo} -> ${pkg.name}`);
     }
   }
-  notes.push('external package-name guard checks create-starter and shotkit without counting them as baseline evidence');
+  notes.push('external package-name guard checks create-starter without counting it as baseline evidence');
 }
 
 function auditRepo(repo) {
@@ -168,7 +165,7 @@ function auditRepo(repo) {
     if (/npx\s+-y\s+starter-series|audit-security/.test(orgAudit)) {
       failures.push('org-audit still depends on create-starter audit-security');
     }
-    if (linesMatching(orgAudit, /^\s*REPOS=.*\b(create-starter|shotkit)\b/).length) {
+    if (linesMatching(orgAudit, /^\s*REPOS=.*\b(create-starter)\b/).length) {
       failures.push('org-audit includes external dependency repos');
     }
     auditExternalPackageNames(failures, notes);
@@ -185,25 +182,13 @@ function auditRepo(repo) {
       failures.push('static site no longer exposes the direct GitHub template first action');
     }
 
-    const dotProfile = readText('dot-github', 'profile/README.md');
-    for (const line of linesMatching(dotProfile, /(create-starter|shotkit|Icon Maker).*npx CLI/i)) {
+    const dotProfile = readText('.github', 'profile/README.md');
+    for (const line of linesMatching(dotProfile, /(create-starter).*npx CLI/i)) {
       failures.push(`org profile presents external/pre-release tool as active npx CLI: ${line.trim()}`);
     }
 
-    const iconReadmes = [
-      ['icon-maker', 'README.md'],
-      ['icon-maker', 'README.ko.md'],
-      ['icon-maker', 'AGENTS.md'],
-      ['icon-maker', 'skills/create-icons/SKILL.md'],
-    ];
-    for (const [toolRepo, relpath] of iconReadmes) {
-      const text = readText(toolRepo, relpath);
-      for (const line of linesMatching(text, /^\s*-\s*(CLI|명령어):\s*`npx iconkit/i)) {
-        failures.push(`${toolRepo}/${relpath} presents npx iconkit as the current primary CLI: ${line.trim()}`);
-      }
-    }
     notes.push('static hub is exempt from CodeQL; CI runs secret, locale, HTML, and link checks');
-    notes.push('public profile and pre-release icon-maker claim surfaces stay aligned with the baseline');
+    notes.push('public profile claim surfaces stay aligned with the baseline');
   }
 
   return { repo, status: failures.length ? 'fail' : 'pass', failures, notes };
